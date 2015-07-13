@@ -1,0 +1,166 @@
+/* 
+    Document   : css
+    Created on : 16/11/2011, 10:41:32
+    Author     : virgilio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+html {
+    margin: 0;
+    border: 0;
+}
+
+body{
+	background: url("../img/fundo.jpg") repeat scroll 0 0 #222;
+    overflow: hidden;
+}
+
+#sinceramente{
+	background: url("../img/sinceramente.png") no-repeat scroll 0 0 transparent;
+    height: 117px;
+    left: 100px;
+    position: absolute;
+    top: 10px;
+    width: 200px;
+}
+#sobre{
+    background: url("../img/sobre-fundo.jpg") no-repeat scroll 0 0 transparent;
+	width: 1000px;
+	margin:0 auto;
+}
+#marcador{
+	background: url("../img/btn-sobre.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+    height: 200px;
+    right: 70px;
+    position: absolute;
+    top: 0px;
+    width: 100px;
+}
+#voltar{
+	background: url("../img/voltar.png") no-repeat scroll 0 0 transparent;
+    height: 136px;
+	cursor: pointer;
+    right: 100px;
+    position: absolute;
+    top: 400px;
+    width: 58px;
+}
+#ass{
+	background: url("../img/ass.png") no-repeat scroll 0 0 transparent;
+    height: 90px;
+    right: 100px;
+    position: absolute;
+    top: 580px;
+    width: 203px;
+}
+
+ul#fotos {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 1px;
+	top: 20px;
+/*    border: 1px dotted #000;*/
+    position: relative;
+}
+
+ul li.foto {
+    width: 100px;
+    height: 100px;
+    display: block;
+    /*border: 1px solid #000;*/
+    margin: 1px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.toMove {
+
+}
+
+.box_rotate0 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate1 {
+    -moz-transform: rotate(-7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(-7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(-7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=-0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=-0.083)"; /* IE8 */
+}
+
+.box_rotate2 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate3 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate4 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate5 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate6 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate7 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate8 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+.box_rotate9 {
+    -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+    -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
