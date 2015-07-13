@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html ng-app="Sinceramente">
+    <head>
+        <title>Sinceramente,</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/css.css" rel="stylesheet" type="text/css">
+	    <script src="bower_components/angular/angular.js"></script>
+	    <script src="app.js"></script>
+    	<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var maximized = -1;
+                var matrix = 36;
+                var num_images = 42;
+                var inscription = 18;
+                var placed = false;
+				var siteHeight = $(window).height() * 2;
+				var contentTop = $(window).height();
+
+                var images = new Array();
+                for(i = 0; i < num_images; i++) images[i] = i + 1;
+
+
+                function takePlace(){
+                    var img = $('#' + (maximized + 1)).attr('img');
+                    $('#fotos li').each(function(i){
+                        var left = 100 * (i%6);
+                        var top = 100 * parseInt((i/6));
+                        $(this).animate({
+                            opacity: 1,
+                            'left': left,
+                            'top' : top,
+                            'width' : 100,
+                            'height' : 100
+                        }, 500).removeClass().addClass('foto');
+                        if(i == maximized){
+                            setTimeout(function(maximized, img){
+                                $('#' + (maximized + 1)).css({'background-image' : 'url(img/thumb/' + img + '.png)'})
+                            }, 400, maximized, img);
+                        }
+                    });
+                    placed = true;
+                }
+
+                Array.prototype.remove = function(position) {
+                    this.splice(position, 1);
+                    return this;
+                }
+
+                function setBackground(){
+                    var matrix_tmp = 0;
+                    while(matrix_tmp < matrix){
+                        var i = Math.floor(((Math.random()*(images.length))));
+                        $('#' + (matrix_tmp + 1)).attr({'img' : images[i]});
+                        $('#' + (matrix_tmp + 1)).css({'background-image' : 'url(img/thumb/' + images[i] + '.png)'});
+                        images.remove(i);
+                        matrix_tmp++;
+                    }
+                }
+
+                function setBackgroundFlicker(){
+                    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+                    {
+                        tags: "book inscription",
+                        tagmode: "any",
+                        format: "json"
+                    },
+                    function(data) {
+                        $.each(data.items, function(i,item){
+                            $('#' + i).css({'background-image' : 'url(' + item.media.m + ')'});
+                        });
+                        $.each(data.items, function(i,item){
+                            $('#' + (i + 20)).css({'background-image' : 'url(' + item.media.m + ')'});
+                        });
+                    });
+                }
+
+                function moveRandom(i, side){
+                    if(side < 50){
+                        var x = i%6 + 2; //coluna
+
+                        $('#' + i).animate({
+                            opacity: 0.25,
+                            left: -(100 + Math.round(((Math.random(i)*150)))),
+                            top : Math.round(((Math.random()*500)))
+                        }, 500, function() {
+                            // Animation complete.
+                        }).addClass(getBoxRotateClass());
+                    }
+                    else if (side >= 50){
+                        var x = i%6 + 6; //coluna
+                        $('#' + i).animate({
+                            opacity: 0.25,
+                            left: 600 + Math.round(((Math.random(i)*150))),
+                            top : Math.round(((Math.random()*500)))
+                        }, 500, function() {
+                            // Animation complete.
+                        }).addClass(getBoxRotateClass());
+                    }
+                }
+
+                function printc(str){
+                    $("#console").append("<p>" + str + "</p>");
+                }
+
+                function getInscription(){
+                    return Math.floor(((Math.random()*(inscription + 0)))) + 1;
+                }
+
+                function getBoxRotateClass(){
+                    var classe = Math.floor(Math.random()*2);
+                    return 'box_rotate' + classe;
+                }
+
+                function maximize(el){
+                    var left = el.css('left');
+                    var top = el.css('top');
+                    var id = el.attr('id');
+                    var img = el.attr('img');
+                    $('#fotos li').each(function(i){
+                        if($(this).attr('id') != id){
+                            moveRandom(i + 1, Math.round(((Math.random()*100))))
+                        }
+                        else {
+                            setTimeout(function(i){
+                                if(Math.floor((((Math.random()*100))) > 50))
+                                    $('#' + i).css({'background-image' : 'url(img/foto/' + img + '.png)'});
+                                else
+                                    $('#' + i).css({'background-image' : 'url(img/inscription/' + getInscription() + '.png)'});
+                                $('#' + i).animate({
+                                    width: 600,
+                                    height: 600,
+                                    left: 0,
+                                    top: 0
+                                });
+                            }, 500, i + 1);
+                            maximized = i;
+                        }
+                    });
+                    placed = false;
+                }
+
+                takePlace();
+                setBackground();
+                $('.foto').click(function(){
+                    if(!placed && $(this).css('width') == '100px'){
+                        takePlace();
+                        maximize($(this));
+                    }
+                    else if(placed){
+                        maximize($(this));
+                    }
+                    else {
+                        takePlace();
+                    }
+                });
+
+				//scroollindo
+
+				$('body').height(siteHeight);
+				$('#content').css({'position': 'absolute', 'width' : $(window).width(), 'top': contentTop + 'px'});
+
+				function Scroll(t){
+					$("html,body").animate({ scrollTop: t}, 500 );
+				};
+
+				Scroll(contentTop);
+
+				$('#voltar').click(function() {
+				   Scroll(contentTop);
+				});
+
+				$('#marcador').click(function() {
+				   Scroll(0);
+				});
+
+
+            });
+
+       </script>
+    </head>
+    <body ng-controller="MainController">
+        <div id="sobre">
+            <img src="img/sobre.png"/>
+            <div id ="voltar"></div>
+        </div>
+        <div id="content">
+            <ul id="fotos">
+	    	    <li ng-repeat="n in [] | range:36"
+                    id="{{$index + 1}}" class='foto'>
+                </li>
+	        </ul>
+    	    <div id ="sinceramente"></div>
+	        <div id ="ass"></div>
+	        <div id ="marcador"></div>
+        </div>
+        <div id="console" style="position: absolute; top: 0; left: 0; width: 50px; height: 100%;">
+
+        </div>
+    </body>
+</html>
